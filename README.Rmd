@@ -1,0 +1,88 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd -->
+
+# MIDS
+
+MIDS provides tools for applying **Multi-frame Individual Distinction by Size** to stereo-video fish observations.
+
+The package estimates the number of distinct individuals observed within a camera deployment by comparing fish length measurements across frames while accounting for measurement precision.
+
+## Installation
+
+During development, load the package from the project folder using:
+
+```{r, eval=FALSE}
+pkgload::load_all()
+```
+
+After installation, MIDS can be loaded with:
+
+```{r, eval=FALSE}
+library(MIDS)
+```
+
+## Example
+
+```{r example}
+test_data <- data.frame(
+  CameraID = c("C1","C1","C1","C1","C2","C2"),
+  Frame = c(1,1,2,2,1,2),
+  Species = c("A","A","A","A","A","A"),
+  Length = c(105,112,109,150,98,104),
+  Precision_Error = c(2.5,2.0,3.0,2.5,1.8,2.2)
+)
+
+results <- run_mids(
+  data = test_data,
+  group_cols = c("CameraID", "Species"),
+  frame_col = "Frame",
+  length_col = "Length",
+  precision_col = "Precision_Error"
+)
+
+results
+```
+
+## Summary
+
+```{r}
+summarise_mids(test_data, results)
+```
+
+## Summary by group
+
+```{r}
+summarise_mids_by_group(
+  original_data = test_data,
+  mids_results = results,
+  group_cols = c("CameraID", "Species")
+)
+```
+
+## Required columns
+
+MIDS requires:
+
+- a grouping structure, usually camera/deployment and species
+- a frame or time column
+- a fish length column
+- a measurement precision/error column
+
+For example:
+
+```{r, eval=FALSE}
+run_mids(
+  data = fish_data,
+  group_cols = c("DeploymentID", "Species"),
+  frame_col = "Frame",
+  length_col = "Length_mm",
+  precision_col = "Precision_Error"
+)
+```
+
+## Notes
+
+`group_cols` should define the level within which fish may represent repeat observations of the same individual. At minimum, this should usually include a camera, deployment, or video identifier and species.
