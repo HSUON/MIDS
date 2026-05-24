@@ -1,9 +1,3 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit README.Rmd -->
-
 # MIDS
 
 MIDS provides tools for applying **Multi-frame Individual Distinction by Size** to stereo-video fish observations.
