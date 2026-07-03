@@ -39,39 +39,22 @@ run_mids_with_alpha <- function(df_group,
 
       previous_all <- dplyr::bind_rows(assigned_rows)
 
-      known <- previous_all %>%
-        dplyr::group_by(individual_id) %>%
-        {
-          if (compare_to == "earliest") {
-            dplyr::arrange(., .data[[frame_col]], local_id)
-          } else {
-            dplyr::arrange(., dplyr::desc(.data[[frame_col]]), dplyr::desc(local_id))
-          }
-        } %>%
-        dplyr::slice(1) %>%
-        dplyr::ungroup() %>%
+      # Full measurement history for each known individual
+      known_history <- previous_all %>%
         dplyr::select(
           individual_id,
-          dplyr::all_of(length_col),
-          dplyr::all_of(precision_col)
-        ) %>%
-        dplyr::rename(
-          Length = dplyr::all_of(length_col),
-          Precision_Error = dplyr::all_of(precision_col)
+          previous_local_id = local_id,
+          previous_Frame = dplyr::all_of(frame_col),
+          prev_Length = dplyr::all_of(length_col),
+          prev_PE = dplyr::all_of(precision_col)
         )
 
-      candidate_pairs <- tidyr::expand_grid(
-        individual_id = known$individual_id,
+      # Compare each current fish to all previous observations of each known individual
+      pair_tests <- tidyr::expand_grid(
+        individual_id = unique(known_history$individual_id),
         local_id = current$local_id
       ) %>%
-        dplyr::left_join(
-          known %>%
-            dplyr::rename(
-              prev_Length = Length,
-              prev_PE = Precision_Error
-            ),
-          by = "individual_id"
-        ) %>%
+        dplyr::left_join(known_history, by = "individual_id") %>%
         dplyr::left_join(
           current %>%
             dplyr::select(
@@ -80,30 +63,37 @@ run_mids_with_alpha <- function(df_group,
               dplyr::all_of(precision_col)
             ) %>%
             dplyr::rename(
-              Length = dplyr::all_of(length_col),
-              Precision_Error = dplyr::all_of(precision_col)
-            ) %>%
-            dplyr::rename(
-              cur_Length = Length,
-              cur_PE = Precision_Error
+              cur_Length = dplyr::all_of(length_col),
+              cur_PE = dplyr::all_of(precision_col)
             ),
           by = "local_id"
         ) %>%
         dplyr::mutate(
           z = abs(prev_Length - cur_Length) / sqrt(prev_PE^2 + cur_PE^2),
-          p = 2 * (1 - stats::pnorm(z))
+          p = 2 * (1 - stats::pnorm(z)),
+          non_distinct = p >= alpha_used
+        )
+
+      # A current fish can only match an existing individual if it overlaps
+      # with all previous observations assigned to that individual
+      candidate_pairs <- pair_tests %>%
+        dplyr::group_by(individual_id, local_id) %>%
+        dplyr::summarise(
+          all_history_matches = all(non_distinct),
+          min_p = min(p),
+          .groups = "drop"
         ) %>%
-        dplyr::filter(p >= alpha_used)
+        dplyr::filter(all_history_matches)
 
       if (nrow(candidate_pairs) > 0) {
 
         vertices <- tibble::tibble(
           name = c(
-            paste0("ind_", known$individual_id),
+            paste0("ind_", unique(previous_all$individual_id)),
             paste0("fish_", current$local_id)
           ),
           type = c(
-            rep(FALSE, nrow(known)),
+            rep(FALSE, length(unique(previous_all$individual_id))),
             rep(TRUE, nrow(current))
           )
         )
@@ -159,4 +149,3 @@ run_mids_with_alpha <- function(df_group,
   dplyr::bind_rows(assigned_rows) %>%
     dplyr::arrange(.data[[frame_col]], local_id)
 }
-
