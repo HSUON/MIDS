@@ -1,14 +1,8 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit README.Rmd -->
-
 # MIDS
 
-MIDS provides tools for applying **Multi-frame Individual Distinction by Size** to stereo-video fish observations.
+MIDS provides tools for applying **Multi-frame Individual Distinction by Size** to stereo-video observations.
 
-The package estimates the number of distinct individuals observed within a camera deployment by comparing fish length measurements across frames while accounting for measurement precision.
+The package estimates the number of distinct individuals observed within a camera deployment by comparing length measurements across frames while accounting for measurement precision.
 
 ## Installation
 
