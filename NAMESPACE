@@ -2,4 +2,6 @@
 
 export(run_mids)
 export(summarise_mids)
+export(summarise_mids_by_group)
 importFrom(magrittr,"%>%")
+importFrom(rlang,.data)

@@ -11,34 +11,51 @@ run_mids(
   length_col,
   precision_col,
   alpha = 0.05,
-  compare_to = c("earliest", "latest"),
-  use_post_bonferroni = TRUE
+  use_post_bonferroni = TRUE,
+  time_limit_seconds = 300
 )
 }
 \arguments{
 \item{data}{A data frame of fish observations.}
 
-\item{group_cols}{Character vector of grouping columns. These should define
-the independent comparison unit, usually deployment/camera/video and species.}
+\item{group_cols}{Character vector of grouping columns defining independent
+comparison units. These should ordinarily include deployment, camera or
+video identifier, and species.}
 
-\item{frame_col}{Column containing frame number or time.}
+\item{frame_col}{Character string naming the frame or time column.}
 
-\item{length_col}{Column containing fish length.}
+\item{length_col}{Character string naming the fish-length column.}
 
-\item{precision_col}{Column containing measurement precision error.}
+\item{precision_col}{Character string naming the measurement precision-error
+column.}
 
-\item{alpha}{Significance threshold used for length-overlap comparisons.}
+\item{alpha}{Initial significance threshold used for pairwise length
+comparisons. Default is \code{0.05}.}
 
-\item{compare_to}{Whether to compare new observations to the earliest or latest
-measurement of a previously assigned individual.}
+\item{use_post_bonferroni}{Logical. If \code{TRUE}, MIDS is rerun using a fixed
+second-pass threshold calculated as \code{alpha} divided by the number of
+first-pass inferred individuals.}
 
-\item{use_post_bonferroni}{Logical. If TRUE, reruns MIDS using a Bonferroni
-correction based on the first-pass number of distinct individuals.}
+\item{time_limit_seconds}{Maximum time allowed for exact graph colouring
+within one grouped comparison unit and pass. Default is 300 seconds.}
 }
 \value{
-A data frame of distinct individual records.
+A data frame containing one representative row for each inferred
+individual. The earliest observation is retained only as the output row;
+frame order does not determine identity.
 }
 \description{
 Applies Multi-frame Individual Distinction by Size (MIDS) to stereo-video
-observations to estimate distinct individuals within user-defined groups.
+observations to estimate the minimum number of distinct individuals
+consistent with all pairwise length comparisons and same-frame
+co-occurrence constraints.
+}
+\details{
+MIDS is performed retrospectively within each user-defined group. Every
+unique observation pair is evaluated simultaneously, avoiding assumptions
+that earlier or later measurements are inherently more reliable.
+
+When \code{use_post_bonferroni = TRUE}, MIDS is first run at \code{alpha}. The number
+of first-pass inferred individuals is then used to calculate one fixed
+second-pass threshold, and the complete retrospective analysis is repeated.
 }
