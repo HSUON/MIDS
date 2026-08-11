@@ -1,3 +1,9 @@
+MIDS (Multi-frame Individual Distinctions by Size) version 1.0
+
+For troubleshooting contact: Hayden.Swift@newcastle.edu.au 
+
+
+
 # MIDS guide on how to implement the analysis and sotware package in RStudio. 
 
 
