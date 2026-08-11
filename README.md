@@ -43,7 +43,7 @@ library(MIDS)
 - a grouping structure, which includes a **"Camera"** number/ID coloumn and a **"Species"** coloumn. However, other factors such as **"location"**, **"season"** or **"site"** can be added if required to group the cameras.
 - a **"frame"** or time column for when the individual(s) has/have appeared within a video file
 - a **"length"** column with the size of each individual (mm)
-- a **"precision_error"** column including the measurement error for each individual size measurement (mm)
+- a **"precision error"** column including the measurement error for each individual size measurement (mm)
 
 ---
 
