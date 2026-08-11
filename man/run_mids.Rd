@@ -42,7 +42,10 @@ within one grouped comparison unit and pass. Default is 300 seconds.}
 \value{
 A data frame containing one representative row for each inferred
 individual. The earliest observation is retained only as the output row;
-frame order does not determine identity.
+frame order does not determine identity. \code{MIDS_n} gives the final number
+of distinct individuals inferred within each comparison group, and
+\code{alpha_used} gives the significance threshold used for the final
+retrospective assignment.
 }
 \description{
 Applies Multi-frame Individual Distinction by Size (MIDS) to stereo-video

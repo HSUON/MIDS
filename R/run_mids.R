@@ -28,10 +28,12 @@
 #'   first-pass inferred individuals.
 #' @param time_limit_seconds Maximum time allowed for exact graph colouring
 #'   within one grouped comparison unit and pass. Default is 300 seconds.
-#'
-#' @return A data frame containing one representative row for each inferred
+#'@return A data frame containing one representative row for each inferred
 #'   individual. The earliest observation is retained only as the output row;
-#'   frame order does not determine identity.
+#'   frame order does not determine identity. `MIDS_n` gives the final number
+#'   of distinct individuals inferred within each comparison group, and
+#'   `alpha_used` gives the significance threshold used for the final
+#'   retrospective assignment.
 #'
 #' @export
 #' @importFrom magrittr %>%
@@ -226,7 +228,7 @@ run_mids <- function(data,
   # -----------------------------------------------------------------------
   # Retain one output record per inferred individual
   # -----------------------------------------------------------------------
-  #
+
   # Identity has already been determined retrospectively.
   # The earliest row is retained only as the representative output row.
 
@@ -248,6 +250,44 @@ run_mids <- function(data,
     ) %>%
     dplyr::slice(1L) %>%
     dplyr::ungroup()
+
+  # -----------------------------------------------------------------------
+  # Clean user-facing output
+  # -----------------------------------------------------------------------
+
+  # exact_n_individuals and final_n_distinct should represent the same
+  # final retrospective MIDS abundance. Check this before collapsing them.
+
+  if (
+    all(c("exact_n_individuals", "final_n_distinct") %in%
+        names(mids_distinct)) &&
+    any(
+      mids_distinct$exact_n_individuals !=
+      mids_distinct$final_n_distinct
+    )
+  ) {
+    stop(
+      "`exact_n_individuals` and `final_n_distinct` do not agree.",
+      call. = FALSE
+    )
+  }
+
+  mids_distinct <- mids_distinct %>%
+    dplyr::mutate(
+      MIDS_n = .data$final_n_distinct
+    ) %>%
+    dplyr::select(
+      -dplyr::any_of(
+        c(
+          "exact_n_individuals",
+          "first_pass_n_distinct",
+          "alpha_first_pass",
+          "alpha_second_pass",
+          "final_n_distinct",
+          "assignment_method"
+        )
+      )
+    )
 
   mids_distinct
 }
