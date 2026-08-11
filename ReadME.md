@@ -4,7 +4,7 @@
 
 ---
 
-## **MIDS guide on how to implement the analysis and sotware package in RStudio.**
+## **MIDS guide on how to implement the analysis and software package in RStudio.**
 
 MIDS package provides tools for applying **Multi-frame Individual Distinctions by Size** to stereo-video camera data.
 
