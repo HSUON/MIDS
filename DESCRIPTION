@@ -1,36 +1,28 @@
 Package: MIDS
 Title: Multi-Frame Individual Distinctions by Size
 Version: 1.0
-
 Authors@R:
     person(
       "Hayden", "Swift",
       email = "hayden.swift@newcastle.edu.au",
       role = c("aut", "cre")
     )
-
 Description: Provides tools for applying Multi-Frame Individual
     Distinctions by Size (MIDS) to stereo-video observations.
     The package estimates distinct individuals by comparing fish
     length measurements across frames while accounting for
     measurement precision and uncertainty.
-
 License: file LICENSE
-
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-
 Imports:
     dplyr,
     igraph,
     magrittr,
-    purrr,
     rlang,
     tibble,
     tidyr
-
 Suggests:
     testthat (>= 3.0.0)
-
 Config/testthat/edition: 3
