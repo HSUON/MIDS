@@ -90,3 +90,18 @@ mids_results = results,
 group_cols = c("Camera", "Species")
 )
 ```
+
+## License
+
+MIDS is made available under the **PolyForm Noncommercial License 1.0.0**.
+
+The software may be used, modified, and distributed for permitted non-commercial purposes in accordance with the license terms. This includes use by educational institutions, public research organisations, environmental protection organisations, and government institutions.
+
+**Commercial use of MIDS is not permitted under this license and requires a separate commercial license from the copyright holder.**
+
+For commercial licensing enquiries, please contact:  
+**Hayden Swift** — Hayden.Swift@newcastle.edu.au
+
+See the [LICENSE](LICENSE) file for the complete license terms.
+
+© 2026 Hayden Swift.
