@@ -1,6 +1,6 @@
 Package: MIDS
 Title: Multi-Frame Individual Distinction by Size
-Version: 0.0.0.9000
+Version: 1
 Authors@R: 
     person("Hayden", "Swift", email = "hayden.swift@newcastle.edu.au", role = c("aut", "cre"))
 Description: Provides tools for applying Multi-frame Individual Distinction by Size (MIDS)
