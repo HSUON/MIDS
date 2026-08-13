@@ -1,4 +1,4 @@
-# **MIDS (Multi-frame Individual Distinctions by Size) version 1.0**
+# **MIDS (Multi-frame Individual Distinctions by Size) Version 1.0**
 
 **For troubleshooting and feedback contact:** [Hayden.Swift@newcastle.edu.au](mailto:Hayden.Swift@newcastle.edu.au)
 
