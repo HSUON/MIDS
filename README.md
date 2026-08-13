@@ -28,7 +28,7 @@ library(MIDS)
 
 ### **MIDS package functions**
 
-**Function 1: `run_mids`** - This function is the main MIDS analysis where individuals are statisically compared using the MIDS logic.
+**Function 1: `run_mids`** - This function is the main MIDS analysis where individuals are statistically compared using the MIDS logic.
 
 **Function 2: `summarise_mids`** - This function provides the total number of observations from the original dataset (pre-mids), the total number from the MIDS filtered dataset, and the total number of removal individuals.
 
