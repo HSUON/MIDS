@@ -6,7 +6,7 @@ authors:
     given-names: "Hayden"
 
 title: "MIDS: Multi-frame Individual Distinctions by Size"
-version: 1.0.0
+version: 1.0
 date-released: 2026-08-18
 url: "https://github.com/HSUON/MIDS"
 
@@ -17,6 +17,10 @@ preferred-citation:
       given-names: "Hayden"
     - family-names: "Harasti"
       given-names: "David"
+    - family-names: "Stat"
+      given-names: "Michael"
+    - family-names: "Gaston"
+      given-names: "Troy"
     # remaining authors here
   title: "Improving demographics and conservation of fishes through multi-frame individual distinctions by size (MIDS)"
   journal: "Remote Sensing in Ecology and Conservation"
