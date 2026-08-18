@@ -3,6 +3,19 @@
 **For troubleshooting and feedback contact:** [Hayden.Swift@newcastle.edu.au](mailto:Hayden.Swift@newcastle.edu.au)
 
 ---
+## Citation
+
+If you use MIDS in your research, please cite the associated publication:
+
+> Swift, H., Harasti, D., Stat, M., Huggett, M., Gaston., T. (2026). *Improving demographics and conservation of fishes through Multi-frame Individual Distinctions by Size (MIDS).* Remote Sensing in Ecology and Conservation. DOI forthcoming.
+
+Citation information for MIDS can also be accessed in R using:
+
+```r
+citation("MIDS")
+```
+
+The citation will be updated with the final publication details and DOI once available.
 
 ## **MIDS guide on how to implement the analysis and software package in RStudio.**
 
