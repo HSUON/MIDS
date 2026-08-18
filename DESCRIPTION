@@ -1,6 +1,6 @@
 Package: MIDS
 Title: Multi-Frame Individual Distinctions by Size
-Version: 1.0.0
+Version: 1.0
 Authors@R:
     person(
       "Hayden", "Swift",
