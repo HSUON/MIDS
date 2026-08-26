@@ -15,7 +15,7 @@ The citation will be updated with the final publication details and DOI once ava
 
 MIDS package provides tools for applying **Multi-frame Individual Distinctions by Size** to stereo-video camera data.
 
-The package estimates the number of **distinct individuals** observed within a camera deployment using **statistical inference** and by applying the **MIDS logic** to remove repeat observations across time.
+The package estimates the number of **distinct individuals** observed within a camera deployment using **statistical inference** and by applying the **MIDS algorithm** to remove repeat observations across time.
 
 ---
 
