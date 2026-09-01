@@ -7,7 +7,7 @@
 
 If you use MIDS in your research, please cite the associated publication:
 
-> Swift, H., Harasti, D., Stat, M., Huggett, M., Gaston., T. (2026). *Improving demographics and conservation of fishes through multi-frame individual distinctions by size (MIDS).* Remote Sensing in Ecology and Conservation. DOI forthcoming.
+> Swift, H., Harasti, D., Stat, M., Huggett, M., Gaston., T. (2026). *Improving demographics and conservation of fishes through multi-frame individual distinctions by size (MIDS).* Remote Sensing in Ecology and Conservation. https://doi.org/10.1002/rse2.70104
 
 The citation will be updated with the final publication details and DOI once available.
 
