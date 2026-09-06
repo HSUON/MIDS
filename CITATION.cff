@@ -1,30 +1,28 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the associated publication below."
+message: "If you use MIDS in your research, please cite the associated publication below."
 
 authors:
-
-* family-names: "Swift"
-  given-names: "Hayden"
+  - family-names: "Swift"
+    given-names: "Hayden"
 
 title: "MIDS: Multi-frame Individual Distinctions by Size"
-version: 1.0
-date-released: 2026-08-18
+version: "1.0"
+date-released: "2026-08-18"
 url: "https://github.com/HSUON/MIDS"
 
 preferred-citation:
-type: article
-authors:
-
-* family-names: "Swift"
-  given-names: "Hayden"
-* family-names: "Harasti"
-  given-names: "David"
-* family-names: "Huggett"
-  given-names: "Megan"
-* family-names: "Stat"
-  given-names: "Michael"
-* family-names: "Gaston"
-  given-names: "Troy"
+  type: article
+  authors:
+    - family-names: "Swift"
+      given-names: "Hayden"
+    - family-names: "Harasti"
+      given-names: "David"
+    - family-names: "Huggett"
+      given-names: "Megan"
+    - family-names: "Stat"
+      given-names: "Michael"
+    - family-names: "Gaston"
+      given-names: "Troy"
   doi: "10.1002/rse2.70104"
   journal: "Remote Sensing in Ecology and Conservation"
   title: "Improving Demographics and Conservation of Fishes Through Multi-Frame Individual Distinctions by Size (MIDS)"
