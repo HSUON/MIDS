@@ -7,7 +7,7 @@
 
 If you use MIDS in your research, please cite the associated publication:
 
-> Swift, H., Harasti, D., Stat, M., Huggett, M., Gaston., T. (2026). *Improving demographics and conservation of fishes through multi-frame individual distinctions by size (MIDS).* Remote Sensing in Ecology and Conservation. https://doi.org/10.1002/rse2.70104
+> Swift, H., Harasti, D., Huggett, M., Stat, M., & Gaston, T. (2026). Improving demographics and conservation of fishes through multi-frame individual distinctions by size (MIDS). Remote Sensing in Ecology and Conservation. https://doi.org/10.1002/rse2.70104.
 
 ## **MIDS guide on how to implement the analysis and software package in RStudio.**
 
@@ -35,7 +35,7 @@ library(MIDS)
 
 **Function 1: `run_mids`** - This function is the main MIDS analysis where individuals are statistically compared using the MIDS logic and algorithm.
 
-**Function 2: `summarise_mids`** - This function provides the total number of observations from the original dataset (pre-mids), the total number from the MIDS filtered dataset, and the total number of removal individuals.
+**Function 2: `summarise_mids`** - This function provides the total number of observations from the original dataset (pre-mids), the total number from the MIDS filtered dataset, and the total number of removed individuals.
 
 **Function 3: `summarise_mids_by_group`** - This function provides a detailed list of the individuals that were both retained and removed from the analysis.
 
