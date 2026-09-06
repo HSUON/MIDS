@@ -7,8 +7,8 @@ family-names: "Swift"
 given-names: "Hayden"
 
 title: "MIDS: Multi-frame Individual Distinctions by Size"
-version: 1.0
-date-released: 2026-08-18
+version: "1.0"
+date-released: "2026-08-18"
 url: "https://github.com/HSUON/MIDS"
 
 preferred-citation:
